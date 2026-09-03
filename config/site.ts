@@ -8,7 +8,7 @@ export const site = {
   name: "Emirates Textiles",
   legalName: "Emirates Textiles",
   founded: 1999,
-  url: "https://emirates-textiles-demo.vercel.app",
+  url: "https://emirates-textiles.vercel.app",
   tagline: "Quality fabrics & textiles, supplied across South Africa since 1999.",
   positioning:
     "South African wholesalers of quality fabrics, hospitality textiles and Simon Baker luxury bed linen.",
