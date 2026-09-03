@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================
+   Emirates Textiles — light, warm, editorial textile showroom
+   Display: Fraunces (serif)  ·  Body: Manrope  (both next/font)
+   ============================================================= */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* sticky header offset for anchors */
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-canvas text-ink-2 antialiased;
+    font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink font-display;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: theme("colors.gold.soft");
+    color: theme("colors.navy.DEFAULT");
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.navy.DEFAULT");
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  /* Section vertical rhythm — generous, editorial (SYSTEM/01) */
+  .section {
+    @apply py-20 md:py-28;
+  }
+
+  /* Uppercase tracked eyebrow label */
+  .eyebrow {
+    @apply font-body text-ink-muted;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .measure {
+    max-width: 62ch;
+  }
+
+  /* Gold hairline mark that precedes an eyebrow */
+  .eyebrow-mark {
+    display: inline-block;
+    width: 1.75rem;
+    height: 1px;
+    background: theme("colors.gold.DEFAULT");
+    vertical-align: middle;
+    margin-right: 0.75rem;
+  }
+
+  /* Woven fabric surface — the swatch texture, tinted by --swatch behind it.
+     Real seamless weave (public/img/weave.jpg) multiplied over the dye colour. */
+  .fabric-swatch {
+    position: relative;
+    background-color: var(--swatch, #ccc);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .fabric-swatch::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--weave-url);
+    background-size: 190px 190px;
+    mix-blend-mode: multiply;
+    opacity: 0.9;
+    z-index: 1;
+  }
+  /* soft directional sheen so the swatch reads like cloth catching light */
+  .fabric-swatch::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 42%),
+      linear-gradient(to top, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0) 40%);
+    z-index: 2;
+  }
+  .fabric-swatch > * {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Thin editorial rule */
+  .rule {
+    height: 1px;
+    background: theme("colors.hair.DEFAULT");
+  }
+}
+
+/* No-JS fallback (Motion System §8) — verbatim */
