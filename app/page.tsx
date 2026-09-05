@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
-import { Fabrics } from "@/components/sections/fabrics";
+import { FabricExplorer } from "@/components/sections/fabric-explorer";
 import { SwatchExperience } from "@/components/sections/swatch-experience";
+import { Signature } from "@/components/sections/signature";
 import { Applications } from "@/components/sections/applications";
 import { Heritage } from "@/components/sections/heritage";
 import { SimonBaker } from "@/components/sections/simon-baker";
@@ -10,8 +11,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Fabrics />
+      <FabricExplorer />
       <SwatchExperience />
+      <Signature />
       <Applications />
       <Heritage />
       <SimonBaker />

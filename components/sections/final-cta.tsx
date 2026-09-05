@@ -6,35 +6,33 @@ import { finalCta } from "@/config/home";
 import { site, waLink } from "@/config/site";
 
 /**
- * Final CTA — the page's one dark spotlight (deep brand navy, not charcoal), the
- * conversion moment. Native enquiry form (no GHL) + direct Call/WhatsApp. All
- * contact details are real.
+ * Final CTA — the page's one dark spotlight (deep brand navy). Native enquiry form
+ * (no GHL) + direct Call/WhatsApp. Textile detailing carries through (tech labels,
+ * a selvage rule). All contact details are real.
  */
 export function FinalCta() {
   const a = site.contact.address;
   return (
-    <section id="enquire" className="section bg-navy text-white">
+    <section id="enquire" className="section relative overflow-hidden bg-navy text-white">
+      {/* faint stitch rule across the top edge */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10" aria-hidden="true" />
       <div className="container grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
+          <p className="flex items-center gap-3">
+            <span className="eyebrow-mark" aria-hidden="true" />
+            <span className="tech text-gold">{finalCta.eyebrow}</span>
+          </p>
           <Reveal>
-            <p className="eyebrow !text-gold">
-              <span className="eyebrow-mark" aria-hidden="true" />
-              {finalCta.eyebrow}
-            </p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-4 max-w-xl font-display text-4xl tracking-tight text-white md:text-5xl lg:text-[3.2rem] lg:leading-[1.02]">
+            <h2 className="mt-5 max-w-xl text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-[3.4rem] lg:leading-[1.02]">
               {finalCta.heading}
             </h2>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-5 max-w-measure text-base leading-relaxed text-white/70 md:text-lg">
-              {finalCta.body}
-            </p>
+          <Reveal delay={0.05}>
+            <p className="mt-5 max-w-measure text-base leading-relaxed text-white/70 md:text-lg">{finalCta.body}</p>
           </Reveal>
 
-          <Reveal delay={0.15}>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Reveal delay={0.1}>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href={waLink("Hi Emirates Textiles, I'd like to enquire about fabric — colours, widths and availability.")}
                 target="_blank"
@@ -56,10 +54,10 @@ export function FinalCta() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.2}>
-            <div className="mt-10 flex items-start gap-3 border-t border-white/10 pt-6 text-sm text-white/60">
+          <Reveal delay={0.15}>
+            <div className="mt-10 flex items-start gap-3 border-t border-white/10 pt-6">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-              <span>
+              <span className="text-sm text-white/60">
                 {a.line1}, {a.line2}, {a.city} {a.postcode}
               </span>
             </div>

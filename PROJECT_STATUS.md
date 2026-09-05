@@ -12,8 +12,7 @@ premium **fabric & textile supplier**, per client feedback.
 |---|---|---|
 | **Density mode** | Editorial (light, airy, generous space) | Client explicitly asked for light/clean/airy; imagery carries the argument. |
 | **Motion character** | `editorial` (ENGINE/motion) — unhurried, calm | Brief: "calm, editorial, tactile, smooth, confident." Not Cuisine-Foods-style. |
-| **Display type** | Fraunces (serif) | Warm, tactile, editorial — evokes craft/fabric without being trendy. |
-| **Body type** | Manrope | Clean, modern, premium; carries the wholesale/spec voice. |
+| **Typeface** | Open Sans — one family, all weights (client direction) | Hierarchy is carried by scale, weight, tracking and composition, not a display serif. Avoids the "AI luxury serif" look; reads as technical/textile-editorial. |
 | **Primary (structure/CTA)** | Navy `#0A2352` (from the real logo) | Recognisably Emirates; premium; white-on-navy passes AA easily. |
 | **Accent (reserved)** | Gold `#C69A3F` (from the logo band) | Single accent, used sparingly: eyebrow marks, active swatch ring, rules, index numerals. Never as body text on light (fails contrast). |
 | **Surfaces** | Warm neutrals: white / canvas `#F8F5F0` / linen / sand | Light, warm, textile-showroom feel. No dark page backgrounds. |
@@ -41,6 +40,62 @@ carries wholesale/hospitality/heritage proof.
 7. **Final CTA** — "How do I enquire?" → native form + WhatsApp/Call.
 
 ---
+
+## Art-direction rework (v2)
+
+The first build read as a predictable "hero → cards → cards → CTA" template. v2
+rebuilds every section as its own composition, removes the AI/component-library
+tells, and keeps the strategy, real content and light direction unchanged.
+
+**Section-by-section:**
+- **Type** — switched to Open Sans everywhere (client direction). Character now
+  comes from weight contrast, oversized words, tight tracking and small tracked
+  technical labels.
+- **Textile graphic language** (new, in `globals.css`) — selvage edge rules, roll-
+  width measurement rules, dashed stitch lines, registration crosshairs, tabular
+  fabric codes. Applied sparingly so the site feels specific to a textile supplier.
+- **Hero** — no longer a plain split. Weight-contrast headline (FABRIC / for every
+  / SPACE.), the fabric image bleeds off the right edge with an overlapping macro
+  crop, a selvage spec label and a roll-width measurement rule. LCP (H1 + priority
+  image) stays static.
+- **Fabric explorer** (replaces the 6-card grid) — a range list drives one large
+  preview that clip-reveals the cloth on hover/tap, with live technical metadata.
+- **Colour experience** — reworked into a textile design tool: giant "18 COLOURS",
+  a large live preview that updates on hover, and the swatches as a compact
+  archive. The full-screen lightbox is retained (the client's core request).
+- **Signature moment** (new) — a strip of cloth unfurls to a full-width scene on
+  scroll (clip-path driven by rAF progress). One memorable, textile-specific
+  interaction. Reduced-motion shows the full frame immediately.
+- **Applications** — a full-bleed alternating lookbook (oversized words, edge-bleed
+  imagery, horizontal reveals), not a card grid.
+- **Heritage** — a giant, cropped "1999" with the real woven cloth showing through
+  the numerals (background-clip: text).
+- **Simon Baker** — calmer and cinematic, using the real Simon Baker branded
+  lifestyle bed image (overlays cropped out).
+- **Navigation** — small tracked-caps labels with a gold underline draw, a brand
+  detail line, and a numbered full-screen mobile menu.
+- **Motion** — less generic fade; adds clip-path reveals, horizontal (slideX)
+  image entrances, the scroll unfurl and live swatch transitions. All reduced-
+  motion guarded (engine `useReducedMotion` + CSS `motion-safe:` / media queries).
+
+**Surface rhythm:** canvas → paper → linen → full-bleed signature → canvas/linen
+alternating lookbook → sand → paper → navy (final CTA) → navy-deep (footer).
+
+## 21st.dev intake register (per RESEARCH/EXTERNAL-COMPONENT-INTAKE.md)
+
+Used as *reference only* — structural/interaction patterns, rebuilt in CSS to
+Emirates tokens (no code, copy, colour, type or imagery taken; no dependency
+added; the OS `motion` engine remains the only animation library).
+
+| Pattern taken | 21st.dev source (author) | Where it influenced | How adapted |
+|---|---|---|---|
+| Clip-path bloom + stacked-slide container | "Slideshow" (youcefbnm) | Fabric explorer preview | Rebuilt with CSS `clip-path` transitions + React state; no framer, restyled to Emirates. |
+| Scroll image-mask / bloom reveal | "Reveal Image Mask" (daiwiikharihar), "Scroll Reveal Image" (unlumen) | Signature unfurl | Rebuilt as CSS `clip-path inset` driven by a rAF scroll-progress hook. |
+| Hover-to-change large image | "Hover Image Gallery" (isaiahbjork) | Swatch live-preview panel | Reduced to hover/focus → active index updating one preview. |
+| Editorial image-led hero | "Editorial Image Hero" (felipemenezes098) | Hero composition | Only the idea of an edge-bleed image + asymmetric headline; fully re-laid-out. |
+| Alternating full-bleed scenes / horizontal reveal | "Horizontal Scroll Gallery" (pulkitxm) family | Applications lookbook | Simplified to alternating edge-bleed rows with slideX entrances. |
+
+No 21st.dev component was installed or shipped. Status: `project-only`, reference.
 
 ## Truth & verification
 
@@ -79,7 +134,7 @@ All the above live in `config/site.ts` — a one-line change once confirmed.
 |---|---|---|
 | **Swatch texture** | A synthesised seamless woven texture (`/img/weave.webp`) tinted per colour | Optional: photographed macro of each real dyed fabric, or keep — it reads as real cloth. |
 | **Swatch colours** | Approximate hex for the 18 client colours | Exact dyed-fabric colour references / real swatch photography. |
-| **Simon Baker image** | A crisp white percale crop (real Emirates fabric) | Proper Simon Baker lifestyle bed-linen photography. |
+| **Simon Baker image** | The client's real Simon Baker branded lifestyle bed shot (overlays cropped out) | A dedicated shoot would lift it further. |
 | **Category / hero imagery** | Real client fabric photos, macro-cropped | A short art-directed fabric shoot would lift every section further. |
 | **Enquiry form** | Native, validates client-side, shows success state — **not wired to a backend** | Connect to the Bbettr webhook architecture (no GHL). |
 | **`site.url`** | Vercel demo URL | Production domain. |

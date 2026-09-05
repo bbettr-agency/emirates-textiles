@@ -52,12 +52,16 @@ const config: Config = {
         whatsapp: "#25D366",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "Cambria", "serif"],
-        body: ["var(--font-body)", "system-ui", "-apple-system", "Segoe UI", "Helvetica", "Arial", "sans-serif"],
+        // One family (Open Sans). "display" kept as an alias so existing usages
+        // resolve to the same face — hierarchy comes from weight/scale/tracking.
+        sans: ["var(--font-sans)", "system-ui", "-apple-system", "Segoe UI", "Helvetica", "Arial", "sans-serif"],
+        display: ["var(--font-sans)", "system-ui", "Segoe UI", "Helvetica", "Arial", "sans-serif"],
+        body: ["var(--font-sans)", "system-ui", "-apple-system", "Segoe UI", "Helvetica", "Arial", "sans-serif"],
       },
       letterSpacing: {
-        label: "0.2em",
+        label: "0.24em",
         wide: "0.14em",
+        tightest: "-0.04em",
       },
       borderRadius: {
         // one restrained radius family — editorial, not rounded-everything

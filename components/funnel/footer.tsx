@@ -15,14 +15,13 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           {/* Brand + positioning */}
           <div className="max-w-sm">
-            <p className="font-display text-3xl text-white">
-              Emirates{" "}
-              <span className="text-gold">Textiles</span>
+            <p className="text-2xl font-extrabold uppercase tracking-tight text-white">
+              Emirates <span className="text-gold">Textiles</span>
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
+            <p className="mt-5 text-sm leading-relaxed text-white/60">
               {site.positioning}
             </p>
-            <p className="mt-6 eyebrow !text-white/40">Est. {site.founded} · Pretoria, SA</p>
+            <p className="mt-6 tech !text-white/40">Est. {site.founded} · Pretoria, SA</p>
           </div>
 
           {/* Explore */}

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { MotionProvider, NOSCRIPT_FALLBACK } from "@/engine/motion";
 import { Header } from "@/components/funnel/header";
@@ -8,18 +8,12 @@ import { StickyCta } from "@/components/funnel/sticky-cta";
 import { site } from "@/config/site";
 import { organizationJsonLd } from "@/lib/jsonld";
 
-const display = Fraunces({
+// Single family, per client direction. Hierarchy is carried by weight, scale,
+// tracking and composition — not by a display serif.
+const sans = Open_Sans({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -70,7 +64,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-ZA" className={`${display.variable} ${body.variable}`}>
+    <html lang="en-ZA" className={sans.variable}>
       <head>
         <noscript>
           <style>{NOSCRIPT_FALLBACK}</style>

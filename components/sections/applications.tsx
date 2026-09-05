@@ -1,62 +1,77 @@
 import Image from "next/image";
-import { Reveal, Stagger } from "@/engine/motion";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Reveal } from "@/engine/motion";
 import { applications } from "@/config/home";
+import { cn } from "@/lib/utils";
 
 /**
- * Fabric in use — shifts perception from "here are samples" to "here is what these
- * become". Editorial: a typographic list of applications anchored by one tactile
- * fabric image. No card grid.
+ * Fabric in use — a lookbook, not a card grid. Full-bleed scenes alternate sides;
+ * an oversized application word carries each, imagery bleeds to the page edge, and
+ * motion enters horizontally (slideX) rather than the usual fade-up.
  */
 export function Applications() {
   return (
-    <section id="applications" className="section bg-canvas">
-      <div className="container">
-        <SectionHeading eyebrow={applications.eyebrow} heading={applications.heading} lead={applications.lead} />
-
-        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-14">
-          {/* List */}
-          <Stagger as="ul" className="lg:col-span-7">
-            {applications.items.map((item, i) => (
-              <Reveal key={item.name} preset="fadeUpItem" as="li">
-                <div className="group flex items-baseline gap-5 border-b border-hair py-6 transition-colors hover:border-gold md:gap-8">
-                  <span className="font-display text-lg text-gold tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className="flex-1">
-                    <h3 className="font-display text-2xl text-ink md:text-[1.7rem]">{item.name}</h3>
-                    <p className="mt-1 max-w-xl text-sm leading-relaxed text-ink-2 md:text-base">
-                      {item.note}
-                    </p>
-                  </div>
-                  <span
-                    className="hidden shrink-0 translate-x-0 text-gold opacity-0 transition-all duration-300 ease-emirates group-hover:translate-x-1 group-hover:opacity-100 sm:block"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </div>
-              </Reveal>
-            ))}
-          </Stagger>
-
-          {/* Anchoring image */}
-          <Reveal className="lg:col-span-5" preset="fadeUp">
-            <div className="relative h-full min-h-[22rem] overflow-hidden rounded-panel ring-1 ring-hair">
-              <Image
-                src="/img/fabric-band.jpg"
-                alt={applications.imageAlt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/45 to-transparent" aria-hidden="true" />
-              <p className="absolute bottom-5 left-5 right-5 font-display text-xl leading-snug text-white">
-                One supplier, from hospitality floors to living rooms.
-              </p>
-            </div>
-          </Reveal>
+    <section id="applications" className="bg-canvas">
+      {/* intro */}
+      <div className="container section pb-8 md:pb-10">
+        <div className="max-w-2xl">
+          <p className="flex items-center gap-3">
+            <span className="eyebrow-mark" aria-hidden="true" />
+            <span className="tech">{applications.eyebrow}</span>
+          </p>
+          <h2 className="mt-4 text-4xl tracking-tight text-ink md:text-5xl lg:text-6xl">{applications.heading}</h2>
         </div>
+      </div>
+
+      <div>
+        {applications.items.map((item, i) => {
+          const imageLeft = i % 2 === 1;
+          return (
+            <article
+              key={item.name}
+              className={cn(
+                "grid items-stretch border-t border-hair lg:grid-cols-2",
+                i % 2 === 1 ? "bg-linen/50" : "bg-canvas",
+              )}
+            >
+              {/* Text side */}
+              <div
+                className={cn(
+                  "relative flex flex-col justify-center px-6 py-12 sm:px-10 lg:px-16 lg:py-24",
+                  imageLeft ? "lg:order-last" : "lg:order-first",
+                )}
+              >
+                <span className="tech-code text-gold">{String(i + 1).padStart(2, "0")} — {applications.eyebrow}</span>
+                <Reveal preset="fadeUp">
+                  <h3 className="mt-3 text-5xl font-extrabold uppercase leading-[0.92] tracking-tightest text-ink sm:text-6xl lg:text-7xl">
+                    {item.name}
+                  </h3>
+                </Reveal>
+                <Reveal preset="fadeUp" delay={0.05}>
+                  <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-2">{item.note}</p>
+                </Reveal>
+                <div className="mt-8 flex items-center gap-3">
+                  <span className="reg-mark" aria-hidden="true" />
+                  <span className="h-px w-16 bg-hair-strong" aria-hidden="true" />
+                  <span className="tech text-ink-muted">Emirates Textiles</span>
+                </div>
+              </div>
+
+              {/* Image side — bleeds to the page edge */}
+              <Reveal
+                preset="slideX"
+                className={cn("relative min-h-[52svh] overflow-hidden lg:min-h-[40rem]", imageLeft ? "lg:order-first" : "lg:order-last")}
+              >
+                <Image
+                  src={item.image}
+                  alt={`${item.name} — Emirates Textiles fabric`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </Reveal>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

@@ -13,7 +13,8 @@ Motion (via the OS `engine/motion` presets) · Lucide icons.
 ## Highlights
 
 - **Fabric-first hero** with a real folded-fabric image (LCP-safe).
-- **Editorial fabric grid** — six real ranges, asymmetric bento, not icon cards.
+- **Interactive fabric explorer** — six real ranges; the cloth clip-reveals as you move through the list (not a card grid).
+- **Signature scroll moment** — a strip of fabric unfurls to a full-width scene.
 - **Colour experience** — a premium swatch lightbox (keyboard nav, Esc,
   click-outside, swipe) that replaces the client's dated fabric sample cards.
 - **Native enquiry form** (no GoHighLevel) — wire to the Bbettr webhook on approval.
