@@ -18,7 +18,8 @@ premium **fabric & textile supplier**, per client feedback.
 | **Surfaces** | Warm neutrals: white / canvas `#F8F5F0` / linen / sand | Light, warm, textile-showroom feel. No dark page backgrounds. |
 | **Radius family** | Small (`0.25–0.875rem`) | Editorial, not rounded-everything. |
 | **Surface rhythm** | canvas → paper → linen → canvas → sand → paper → navy | No two adjacent sections share a tone. |
-| **Dark spotlight** | One: the Final CTA (deep brand **navy**, not charcoal) + navy footer | OS wants one dark conversion moment; kept to brand navy to honour "not a dark website." |
+| **Dark spotlight** | None — the page is light end-to-end (client direction) | The Enquire section and footer were reworked from navy to warm light surfaces (linen / dune) so the close reads as a fabric catalogue, not a bolted-on dark CTA. |
+| **Logo** | Real Emirates logo, background flood-filled to transparent (`scripts/logo_transparent.py`) — used in the nav and the footer | White box removed so it sits on any surface. |
 | **Photography** | Real Emirates fabric photos, macro-cropped + optimised | Hero = real folded fabric stack; category tiles = real weave macros. |
 | **Grid-break moments** | Hero image bleed into warm wash; wide Hospitality tile; giant "1999" | Deliberate, sparing. |
 

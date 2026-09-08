@@ -25,6 +25,7 @@ const config: Config = {
         canvas: "#F8F5F0", // warm off-white — primary ground
         linen: "#F1EBE1", // light warm beige — tinted sections
         sand: "#E9E0D2", // deeper warm band
+        dune: "#E4D7C2", // grounding warm greige — the footer
         hair: {
           DEFAULT: "#E5DBCC", // warm hairline
           strong: "#D6C9B4",
@@ -33,7 +34,7 @@ const config: Config = {
         ink: {
           DEFAULT: "#221F1A", // headings + strong body (warm near-black)
           2: "#453F37", // secondary text  (~8:1 on canvas)
-          muted: "#6C6457", // labels / captions (~4.7:1 on white)
+          muted: "#635A49", // labels / captions — AA on white and the warm surfaces
         },
         // Brand navy — structure, CTA, footer, dark spotlight
         navy: {
