@@ -152,8 +152,8 @@ export const simonBaker = {
   body: "Our own brand, Simon Baker, is well known for excellent quality — a luxury bed-linen range that sits alongside the fabric business, supplying homes and the hospitality trade.",
   spec: "300TC Egyptian Giza Cotton · Satin Stitched",
   cta: { label: "Explore Simon Baker", href: "https://www.instagram.com/simonbakerlinen", external: true },
-  image: "/img/sb.jpg",
-  imageAlt: "A made bed dressed in Simon Baker satin-stitched grey Egyptian cotton bed linen",
+  image: "/img/simon-baker.png",
+  imageAlt: "Simon Baker luxury bed linen by Emirates Textiles",
 } as const;
 
 export const finalCta = {
